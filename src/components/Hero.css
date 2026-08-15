@@ -1,0 +1,116 @@
+.hero {
+  padding: var(--space-6) 0;
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: var(--space-4);
+}
+
+.hero__card {
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  display: flex;
+  align-items: flex-start;
+  min-height: 220px;
+  position: relative;
+}
+
+.hero__card-content {
+  background: rgba(255, 255, 255, 0.0);
+  max-width: 220px;
+}
+
+.hero__card-count {
+  display: block;
+  color: var(--color-primary);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  margin-bottom: var(--space-1);
+}
+
+.hero__card-title {
+  font-size: var(--fs-lg);
+  letter-spacing: 1px;
+  margin-bottom: var(--space-2);
+}
+
+.hero__card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--color-text-dark);
+  border-bottom: 1px solid var(--color-text-dark);
+  padding-bottom: 2px;
+}
+
+/* Large left card spans both rows */
+.hero__card--large {
+  grid-row: 1 / span 2;
+}
+
+.hero__card--top-right {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.hero__card--bottom-left,
+.hero__card--bottom-right {
+  grid-row: 2;
+}
+
+.hero__card--bottom-left,
+.hero__card--bottom-right {
+  grid-column: span 1;
+}
+
+.hero__grid > .hero__card--bottom-left {
+  grid-column: 2;
+}
+
+/* Split bottom-right area: bottom-left and bottom-right sit side by side
+   under the top-right card, so we nest a sub-grid on the right column. */
+@media (min-width: 769px) {
+  .hero__grid {
+    grid-template-columns: 1.1fr 1fr 1fr;
+  }
+  .hero__card--large {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+  .hero__card--top-right {
+    grid-column: 2 / span 2;
+    grid-row: 1;
+  }
+  .hero__card--bottom-left {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .hero__card--bottom-right {
+    grid-column: 3;
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+  }
+  .hero__card--large {
+    grid-row: auto;
+    min-height: 280px;
+  }
+  .hero__card--top-right,
+  .hero__card--bottom-left,
+  .hero__card--bottom-right {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 200px;
+  }
+}
