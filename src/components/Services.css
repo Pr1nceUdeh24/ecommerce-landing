@@ -1,0 +1,29 @@
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+  text-align: center;
+}
+
+.service-card__icon {
+  color: var(--color-accent);
+  margin: 0 auto var(--space-3);
+}
+
+.service-card__title {
+  font-size: var(--fs-md);
+  margin-bottom: var(--space-2);
+}
+
+.service-card__desc {
+  font-size: var(--fs-sm);
+  max-width: 260px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .services__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
