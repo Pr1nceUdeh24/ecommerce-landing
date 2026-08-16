@@ -2,10 +2,12 @@
   padding: var(--space-6) 0;
 }
 
+/* Mobile-first base: single column, cards stack. No card is ever given
+   an explicit grid-column/grid-row here, so there's nothing for a
+   narrower breakpoint to "forget" to reset — this is the reset. */
 .hero__grid {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  grid-template-rows: auto auto;
+  grid-template-columns: 1fr;
   gap: var(--space-4);
 }
 
@@ -21,7 +23,6 @@
 }
 
 .hero__card-content {
-  background: rgba(255, 255, 255, 0.0);
   max-width: 220px;
 }
 
@@ -50,35 +51,13 @@
   padding-bottom: 2px;
 }
 
-/* Large left card spans both rows */
-.hero__card--large {
-  grid-row: 1 / span 2;
-}
-
-.hero__card--top-right {
-  grid-column: 2;
-  grid-row: 1;
-}
-
-.hero__card--bottom-left,
-.hero__card--bottom-right {
-  grid-row: 2;
-}
-
-.hero__card--bottom-left,
-.hero__card--bottom-right {
-  grid-column: span 1;
-}
-
-.hero__grid > .hero__card--bottom-left {
-  grid-column: 2;
-}
-
-/* Split bottom-right area: bottom-left and bottom-right sit side by side
-   under the top-right card, so we nest a sub-grid on the right column. */
+/* Desktop/tablet layout: the asymmetric 3-column grid only exists at
+   this breakpoint and up, so grid-column/grid-row placements are
+   scoped entirely inside this query — they cannot leak into mobile. */
 @media (min-width: 769px) {
   .hero__grid {
     grid-template-columns: 1.1fr 1fr 1fr;
+    grid-template-rows: auto auto;
   }
   .hero__card--large {
     grid-column: 1;
@@ -95,22 +74,5 @@
   .hero__card--bottom-right {
     grid-column: 3;
     grid-row: 2;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero__grid {
-    grid-template-columns: 1fr;
-  }
-  .hero__card--large {
-    grid-row: auto;
-    min-height: 280px;
-  }
-  .hero__card--top-right,
-  .hero__card--bottom-left,
-  .hero__card--bottom-right {
-    grid-column: 1;
-    grid-row: auto;
-    min-height: 200px;
   }
 }
