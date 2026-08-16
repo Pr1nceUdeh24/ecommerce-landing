@@ -53,7 +53,7 @@ npm run preview  # preview the production build locally
 
 Deployed to Netlify:
 
-- **Live URL:** _add your Netlify URL here after deploying_
+- **Live URL:** https://ecommercelandingproject24.netlify.app
 - Build command: `npm run build`
 - Publish directory: `dist`
 
